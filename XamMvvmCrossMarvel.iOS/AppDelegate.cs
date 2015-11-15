@@ -23,11 +23,6 @@ namespace XamMvvmCrossMarvel.iOS
 		// Override point for customization after application launch.
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
-			// Code to start the Xamarin Test Cloud Agent
-			#if ENABLE_TEST_CLOUD
-			Xamarin.Calabash.Start();
-			#endif
-
 			return true;
 		}
 
