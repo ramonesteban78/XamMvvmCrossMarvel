@@ -4,16 +4,23 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-  <EditText
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:textSize="40dp"
-    local:MvxBind="Text Hello"
-    />
-  <TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:textSize="40dp"
-    local:MvxBind="Text Hello"
-    />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            local:MvxBind="Text SearchText" />
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="@android:string/search_go"
+            local:MvxBind="Click SearchByNameCommand" />
+    </LinearLayout>
+    <MvxListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="ItemsSource CharacterList"
+        local:MvxItemTemplate="@layout/item_character" />
 </LinearLayout>

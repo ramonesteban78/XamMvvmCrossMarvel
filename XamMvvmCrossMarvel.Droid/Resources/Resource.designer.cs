@@ -87,9 +87,6 @@ namespace XamMvvmCrossMarvel.Droid
 			// aapt resource value: 0x7f040000
 			public const int MvxBindingTagUnique = 2130968576;
 			
-			// aapt resource value: 0x7f040001
-			public const int myButton = 2130968577;
-			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -107,7 +104,7 @@ namespace XamMvvmCrossMarvel.Droid
 			public const int FirstView = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int item_character = 2130903041;
 			
 			// aapt resource value: 0x7f030002
 			public const int SplashScreen = 2130903042;
