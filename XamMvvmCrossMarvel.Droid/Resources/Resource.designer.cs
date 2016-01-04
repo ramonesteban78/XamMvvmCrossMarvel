@@ -87,6 +87,21 @@ namespace XamMvvmCrossMarvel.Droid
 			// aapt resource value: 0x7f040000
 			public const int MvxBindingTagUnique = 2130968576;
 			
+			// aapt resource value: 0x7f040001
+			public const int imageView1 = 2130968577;
+			
+			// aapt resource value: 0x7f040005
+			public const int progressBarHolder = 2130968581;
+			
+			// aapt resource value: 0x7f040004
+			public const int searchBar = 2130968580;
+			
+			// aapt resource value: 0x7f040002
+			public const int textView1 = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int textView2 = 2130968579;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -101,13 +116,16 @@ namespace XamMvvmCrossMarvel.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int FirstView = 2130903040;
+			public const int DetailView = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int item_character = 2130903041;
+			public const int FirstView = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int SplashScreen = 2130903042;
+			public const int item_character = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int SplashScreen = 2130903043;
 			
 			static Layout()
 			{

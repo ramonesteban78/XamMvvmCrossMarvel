@@ -67,21 +67,45 @@ namespace XamMvvmCorssMarvel.Core.ViewModels
 		}
 		#endregion
 
+		#region CharacterSelection command
+		private MvxCommand<CharacterItemViewModel> _CharacterSelectionCommand;
+
+		public ICommand CharacterSelectionCommand
+		{
+		    get
+		    {
+				_CharacterSelectionCommand = _CharacterSelectionCommand ?? new MvxCommand<CharacterItemViewModel>(DoCharacterSelectionCommand);
+		       return _CharacterSelectionCommand;
+		    }
+		}
+
+		private void DoCharacterSelectionCommand(CharacterItemViewModel item)
+		{
+			this.ShowViewModel<DetailViewModel> (item);      
+		}
+		#endregion
+
 		#region LoadData
 
 		private async Task LoadData (string filter = null, int limit = 0, int offset = 0)
 		{
 			IsBusy = true;
+
 			var result = await _marvelService.GetCharacters (filter, limit, offset);
+
+
 			if (result != null) {
 				CharacterList = (from p in result.Results
 				                 select new CharacterItemViewModel () {
-					Id = p.Id,
-					Name = p.Name,
-					Thumbnail = p.Thumbnail.Path + "." + p.Thumbnail.Extension
+						Id = p.Id,
+						Name = p.Name,
+						Thumbnail = p.Thumbnail.Path + "." + p.Thumbnail.Extension,
+						Description = p.Description
 				}).ToList ();
 			}
+
 			IsBusy = false;
+
 		}
 
 		#endregion

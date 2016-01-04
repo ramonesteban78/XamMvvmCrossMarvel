@@ -86,6 +86,8 @@
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
     <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Views\DetailView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -107,12 +109,16 @@
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
     <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\layout\item_character.axml" />
+    <AndroidResource Include="Resources\layout\DetailView.axml" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\XamMvvmCorssMarvel.Core\XamMvvmCorssMarvel.Core.csproj">
       <Project>{6A1824A3-8400-4241-8A21-DD35C36DD6A5}</Project>
       <Name>XamMvvmCorssMarvel.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>

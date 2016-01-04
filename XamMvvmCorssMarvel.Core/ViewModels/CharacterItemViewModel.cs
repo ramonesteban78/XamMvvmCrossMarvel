@@ -48,6 +48,20 @@ namespace XamMvvmCorssMarvel.Core.Models
 
 		#endregion
 
+		#region Description
+
+		private string _Description;
+
+		public string Description { 
+			get { return _Description; }
+			set { 
+				_Description = value; 
+				RaisePropertyChanged (() => this.Description); 
+			}
+		}
+
+		#endregion
+
 	}
 }
 

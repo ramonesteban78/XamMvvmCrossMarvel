@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--    <ImageView android:scaleType="fitXY"-->
+    <MvxImageView
+        local:MvxBind="ImageUrl Character.Thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:id="@+id/imageView1"
+        android:scaleType="fitXY" />
+    <TextView
+        local:MvxBind="Text Character.Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:padding="5dp" />
+    <TextView
+        local:MvxBind="Text Character.Description"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:padding="5dp" />
+</LinearLayout>

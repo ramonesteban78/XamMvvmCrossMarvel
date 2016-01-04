@@ -10,8 +10,10 @@
         android:layout_height="100dp"
         local:MvxBind="ImageUrl Thumbnail" />
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         style="@android:style/TextAppearance.DeviceDefault.Large"
-        local:MvxBind="Text Name" />
+        local:MvxBind="Text Name"
+        android:padding="5dp"
+        android:layout_gravity="top" />
 </LinearLayout>
