@@ -8,6 +8,7 @@ using XamMvvmCorssMarvel.Core.ViewModels;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using System.Collections.Generic;
 using XamMvvmCrossMarvel.iOS.Tables;
+using XamMvvmCrossMarvel.iOS.Controls;
 
 namespace XamMvvmCrossMarvel.iOS.Views
 {
@@ -16,7 +17,7 @@ namespace XamMvvmCrossMarvel.iOS.Views
 	{
 		UISearchBar searchBar;
 		UITableView tvCharacters;
-		UIActivityIndicatorView activity;
+		CustomActivityIndicatorView activity;
 		CharacterTableViewSource source;
 
 		private float y_axis = 65;
@@ -46,7 +47,10 @@ namespace XamMvvmCrossMarvel.iOS.Views
 			View.Add (tvCharacters);
 
 
-			activity = new UIActivityIndicatorView (new CGRect (0, 0, View.Bounds.Width, View.Bounds.Height));
+			activity = new CustomActivityIndicatorView (new CGRect (0, 0, View.Bounds.Width, View.Bounds.Height));
+			activity.ActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray;
+			View.Add (activity);
+			View.BringSubviewToFront (activity);
 
 		}
 
@@ -61,6 +65,7 @@ namespace XamMvvmCrossMarvel.iOS.Views
 			set.Bind (searchBar).To (vm => vm.SearchText);
 			set.Bind (source).To (vm => vm.CharacterList);
 			set.Bind(source).For(s => s.SelectionChangedCommand).To (vm => vm.CharacterSelectionCommand);
+			set.Bind (activity).For (x => x.Animate).To (vm => vm.IsBusy);
 
 
 			var viewModel = this.ViewModel as FirstViewModel;
