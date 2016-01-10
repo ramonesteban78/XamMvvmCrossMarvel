@@ -29,6 +29,6 @@ namespace XamMvvmCorssMarvel.Core.ViewModels
 			Character = character;
 		}
 
-	}
+    }
 }
 

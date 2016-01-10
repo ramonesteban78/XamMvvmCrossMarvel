@@ -14,7 +14,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <AppBarButton Icon="Back" RequestedTheme="Light" Command="{Binding }"/>
+        <AppBarButton Icon="Back" RequestedTheme="Light" Command="{Binding NavigateBackCommand}"/>
 
         <Image Source="{Binding Character.Thumbnail}"/>
 
