@@ -5,12 +5,39 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="using:Cirrious.MvvmCross.WindowsCommon.Views"
+    xmlns:converters="using:XamMvvmCrossMarvel.Universal.Converters"
+    xmlns:behaviors="using:XamMvvmCrossMarvel.Universal.Behaviors"
     mc:Ignorable="d">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <TextBox Text="{Binding Hello, Mode=TwoWay}" />
-            <TextBlock Text="{Binding Hello}" />
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="20">
+            <TextBox Text="{Binding SearchText, Mode=TwoWay}" Foreground="Black" BorderBrush="Black"/>
+            <Button Content="Search" HorizontalAlignment="Stretch" Command="{Binding SearchByNameCommand}" BorderBrush="Black" Foreground="Black"/>
         </StackPanel>
+
+        <ListView Grid.Row="1" VerticalAlignment="Stretch" ItemsSource="{Binding CharacterList}" Margin="20,0"
+                  SelectionMode="None" IsItemClickEnabled="True" behaviors:ItemClickCommand.Command="{Binding CharacterSelectionCommand}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <Image Width="50" Height="50" Source="{Binding Thumbnail}" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding Name}" Foreground="Black" FontSize="18" TextTrimming="CharacterEllipsis"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Border Grid.RowSpan="2" Background="Gray" Opacity="0.7" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
+            <ProgressRing IsActive="{Binding IsBusy}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="Black"/>
+        </Border>
     </Grid>
 </views:MvxWindowsPage>
