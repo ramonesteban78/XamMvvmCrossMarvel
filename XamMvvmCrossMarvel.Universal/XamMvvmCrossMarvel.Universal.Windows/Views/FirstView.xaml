@@ -1,0 +1,43 @@
+<views:MvxWindowsPage
+    x:Class="XamMvvmCrossMarvel.Universal.Views.FirstView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:Cirrious.MvvmCross.WindowsCommon.Views"
+    xmlns:converters="using:XamMvvmCrossMarvel.Universal.Converters"
+    xmlns:behaviors="using:XamMvvmCrossMarvel.Universal.Behaviors"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="20" HorizontalAlignment="Right" Orientation="Horizontal">
+            <TextBox Margin="0,0,20,0" Width="200" Text="{Binding SearchText, Mode=TwoWay}" Foreground="Black" BorderBrush="Black"/>
+            <Button Content="Search" Command="{Binding SearchByNameCommand}" BorderBrush="Black" Foreground="Black"/>
+        </StackPanel>
+       
+        <GridView Grid.Row="1" Margin="70" VerticalAlignment="Stretch" ItemsSource="{Binding CharacterList}" 
+                  SelectionMode="None" IsItemClickEnabled="True" behaviors:ItemClickCommand.Command="{Binding CharacterSelectionCommand}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Image Width="250" Height="250" Source="{Binding Thumbnail}"/>
+                        <TextBlock Text="{Binding Name}" Foreground="Black" FontSize="18" TextWrapping="Wrap" MaxLines="3" TextTrimming="CharacterEllipsis"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        <Border Grid.RowSpan="2" Background="Gray" Opacity="0.7" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
+        <ProgressRing IsActive="{Binding IsBusy}" Width="150" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="Black"/>
+        </Border>
+    </Grid>
+</views:MvxWindowsPage>
